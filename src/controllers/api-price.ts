@@ -12,9 +12,9 @@ router.post('/',(req, res)=>{
  let price = new Price(req.body);
  price.save((err)=>{
  if (err) {
-         res.json({success: false , msg: 'Error ' + err.message});
+         res.json({success: false , msg: 'Error '});
       } else {
-         res.json({success: true , msg: 'Successful created user'});
+         res.json({success: true , msg: 'Successful created price'});
       }
  });
 });
