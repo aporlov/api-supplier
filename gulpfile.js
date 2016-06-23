@@ -11,7 +11,6 @@ gulp.task('clean', function () {
 });
 
 gulp.task("compile", function () {
-    gulp.start('clean');
     var stream = tsProject.src()
         .pipe(ts(tsProject))
         .js.pipe(gulp.dest("dist"));
