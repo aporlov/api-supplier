@@ -13,7 +13,7 @@ var User = require('./models/user');
 
 //  PRICE
 app.use('/api/price', apiPrice );
-app.use('/api/price', apiPrice );
+app.use('/api/client', apiClient );
 app.get('/', (req,res)=>{
     res.send('welcome to my AP');
 });

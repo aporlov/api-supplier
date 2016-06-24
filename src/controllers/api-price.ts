@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 });
 router.post('/',(req, res)=>{
  let price = new Price(req.body);
- price.save((err)=>{
+ Price.findOneAndUpdate( {code:price.code, supplier_inn:price.supplier_inn, price_name:price.price_name},price,{upsert:true},(err)=>{
  if (err) {
          res.json({success: false , msg: 'Error '});
       } else {

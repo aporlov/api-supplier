@@ -3,7 +3,6 @@
 /*
  * Module dependencies.
  */
-
 var test = require('tape');
 var request = require('supertest');
 var app = require('../dist/main.js').app;
@@ -18,7 +17,11 @@ test('Home page', t => {
     });
 });
 
-test('GET /api/price with right auth', t =>{
+/*
+Test API Price
+*/
+
+test('GET /api/price with test auth', t =>{
   request(app)
      .get('/api/price')
      .auth('test','123456')
@@ -42,7 +45,7 @@ test('GET /api/price with wrong auth', t =>{
 
 test('POST /api/price send json', t =>{
   var price = {
-"code":"999",
+"code":"test",
 "name":"5-нок 50мг Таб. П/о Х50 Б",
 "supplier_inn":"5261096000",
 "supplier_name":"СИА Интернейшнл-Нижний Новгород",
@@ -74,4 +77,46 @@ test('POST /api/price send json', t =>{
       t.end();
     });
 });
+test('GET /api/client with test auth', t =>{
+  request(app)
+     .get('/api/client')
+     .auth('test','1234567')
+     .expect(401)
+     .end(function (err, res) {
+     t.error(err, 'No error');
+      t.end();
+    });
+});
+/*
+Test API Client
+*/
+test('POST /api/client send json', t =>{
+  var client = {
+    "supplier_inn":"5261096000",
+    "supplier_name":"СИА Интернейшнл-Нижний Новгород",
+    "cl_id":"10790228",
+    "cl_name":"Агат ООО Алатырь",
+    "cl_inn":"2122006451",
+    "stories":[
+     {"st_id":"1403075903",
+      "st_name":"Аптека+юр адр Стрелка,7",
+      "st_addr":"429826, ЧР, г. Алатырь, мкр-н Стрелка, д.7"
+     }
+,
+     {"st_id":"1403076073",
+      "st_name":"Аптека Московская/Гончарова",
+      "st_addr":"429820, ЧР, г. Алатырь, улица Московская/Гончарова, дом 92/54"
+     }
+   ]}
+  request(app)
+     .post('/api/client')
+     .auth('test','123456')
+     .send(client)
+     .expect(200)
+     .end(function (err, res) {
+      t.error(err, 'No error');
+      t.end();
+    });
+});
+
 test.onFinish(() => process.exit(0));
