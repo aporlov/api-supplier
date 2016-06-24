@@ -4,9 +4,9 @@
  * Module dependencies.
  */
 
-const test = require('tape');
-const request = require('supertest');
-const app = require('../dist/main.js').app;
+var test = require('tape');
+var request = require('supertest');
+var app = require('../dist/main.js').app;
 
 test('Home page', t => {
   request(app)

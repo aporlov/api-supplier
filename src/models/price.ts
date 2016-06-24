@@ -1,9 +1,9 @@
 /*
 Price model
 */
-const mongoose = require('mongoose') ; // 
-const Schema = mongoose.Schema;
-const CostSchema = new Schema({
+var mongoose = require('mongoose') ; // 
+var Schema = mongoose.Schema;
+var CostSchema = new Schema({
         cl_id: {
           type: String,
            required: true        
@@ -22,7 +22,7 @@ const CostSchema = new Schema({
 //CostSchema.path('value').set(function(num) {
  // return num * 100;
 //});
-const PriceSchema = new Schema({
+var PriceSchema = new Schema({
     code: {
            type: String,
            required: true
@@ -85,6 +85,5 @@ const PriceSchema = new Schema({
     },
     costs: [CostSchema]
 });
-
 
 module.exports = mongoose.model('Price', PriceSchema);

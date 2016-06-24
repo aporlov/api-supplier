@@ -2,11 +2,12 @@
 User model.
 */
 import {Hash} from '../lib/hash';
-const mongoose = require('mongoose') ; // 
-const hash = new Hash();
-const Schema = mongoose.Schema;
+var mongoose = require('mongoose') ; // 
+var Schema = mongoose.Schema;
+var hash = new Hash();
 
-const UserSchema = new Schema({
+
+var UserSchema = new Schema({
     name: {
            type: String,
            unique: true,

@@ -1,6 +1,6 @@
-const test = require('tape');
-const hash =  require('../dist/lib/hash.js').Hash;
-const hashClass = new hash();
+var test = require('tape');
+var hash =  require('../dist/lib/hash.js').Hash;
+var hashClass = new hash();
 
 test('password missing', t => {
   t.plan(1);

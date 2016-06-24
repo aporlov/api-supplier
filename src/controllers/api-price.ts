@@ -1,12 +1,12 @@
 import * as express from 'express';
 import {default as auth} from '../lib/basicauth';
-const router = express.Router();
-const Price = require('../models/price');
+var router = express.Router();
+var Price = require('../models/price');
 
 /* /api/price */
 router.use(auth);
 router.get('/', (req, res) => {
-  res.send('price');
+   res.json({success: true , msg: 'Successful get price'});
 });
 router.post('/',(req, res)=>{
  let price = new Price(req.body);

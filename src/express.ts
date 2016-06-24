@@ -2,7 +2,8 @@ import * as express from  'express';
 import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 import {default as apiPrice } from './controllers/api-price';
-const app = express();
+import {default as apiClient } from './controllers/api-client';
+var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -12,7 +13,7 @@ var User = require('./models/user');
 
 //  PRICE
 app.use('/api/price', apiPrice );
-
+app.use('/api/price', apiPrice );
 app.get('/', (req,res)=>{
     res.send('welcome to my AP');
 });
