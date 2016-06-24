@@ -9,10 +9,10 @@ router.get('/', (req, res) => {
     res.json({success: true , msg: 'Successful get client'});
 });
 router.post('/',(req, res)=>{
- let price = new Client(req.body);
- price.save((err)=>{
+ let client = new Client(req.body);
+ client.findOneAndUpdate( {supplier_inn: client.supplier_inn, cl_id: client.cl_id }, client, {upsert: false}, (err)=>{
  if (err) {
-         res.json({success: false , msg: 'Error '});
+         res.json({success: false , msg: err.toString()});
       } else {
          res.json({success: true , msg: 'Successful created price'});
       }
