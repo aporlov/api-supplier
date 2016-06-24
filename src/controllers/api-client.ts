@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 });
 router.post('/',(req, res)=>{
  let client = new Client(req.body);
- client.findOneAndUpdate( {supplier_inn: client.supplier_inn, cl_id: client.cl_id }, client, {upsert: false}, (err)=>{
+ Client.findOneAndUpdate( {supplier_inn: client.supplier_inn, cl_id: client.cl_id }, client, {upsert: true}, (err)=>{
  if (err) {
          res.json({success: false , msg: err.toString()});
       } else {
